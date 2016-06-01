@@ -1,3 +1,5 @@
+// Must change the file name to MyTree.java otherwise it will not work
+// Program to traverse the tree. Preorder, inorder and postorder
 
 import java.util.Stack;
 
