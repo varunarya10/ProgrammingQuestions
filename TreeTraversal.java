@@ -1,5 +1,5 @@
-// Must rename this file to MyTree.java
-// Preorder, Inorder and Postorder traversals using recursion
+
+import java.util.Stack;
 
 public class MyTree {
 	
@@ -53,6 +53,43 @@ public class MyTree {
 	
 	public Node getRoot() { return root; }
 	
+	public void preOrderIter() {
+		if(root == null) return;
+		Stack<Node> s = new Stack<Node>();
+		s.push(root);
+		Node n;
+		
+		while(s.isEmpty() == false) {
+		
+			n = s.pop();
+			while(n != null) {
+				System.out.print(n.data + " ");
+				if(n.getRight() != null) {
+					s.push(n.getRight());
+				}
+				n = n.getLeft();
+			}
+		}
+		
+		System.out.println();
+	}
+	
+	public void preOrderIter2() {
+		if(root == null) return;
+		Stack<Node> s = new Stack<Node>();
+		s.push(root);
+		Node n;
+		
+		while(s.size() > 0) {
+			n = s.pop();
+			System.out.print(n.data + " ");
+			if(n.getRight() != null) s.push(n.getRight());
+			if(n.getLeft() != null) s.push(n.getLeft());
+		}
+		
+		System.out.println();
+	}
+	
 	public void preOrder() 
 	{ 
 		preOrderWrap(root);
@@ -92,6 +129,8 @@ public class MyTree {
 	public static void main(String[] args) {
 		MyTree tree = new MyTree();
 		tree.create_tree();
+		tree.preOrderIter();
+		tree.preOrderIter2();
 		tree.preOrder();
 		tree.inOrder();
 		tree.postOrder();
